@@ -1,6 +1,6 @@
 // Fallback project list (74 items)
-// Automatically used if the backend API server is offline or when opening as a static file.
-window.PROJECTS_DATA = [
+// Universal module support (Browser + Node.js)
+const PROJECTS_DATA = [
   {"id":1,"name":"invoice-shield-ai","description":"AI-based invoice fraud and anomaly detection tool.","frontend":"HTML, CSS, JavaScript","backend":"Python (Flask)","db_used":"SQLite"},
   {"id":2,"name":"Billing-Management-System-SPVM-Tech-Solution","description":"Billing and invoice management system for SPVM Tech Solution.","frontend":"HTML, CSS, JavaScript","backend":"None (client-side only)","db_used":"None (browser LocalStorage)"},
   {"id":3,"name":"spvm3-SentinelAI-AI-Based-Cyber-Threat-Early-Warning-Autonomous-SOC-Triage","description":"AI-based cyber threat early-warning system with autonomous SOC alert triage.","frontend":"HTML, CSS, JavaScript","backend":"Python (FastAPI)","db_used":"SQLite"},
@@ -76,4 +76,12 @@ window.PROJECTS_DATA = [
   {"id":73,"name":"Registration-form","description":"User registration form.","frontend":"HTML, CSS, JavaScript","backend":"None (client-side only)","db_used":"None"},
   {"id":74,"name":"digital-board-duel","description":"Two-player digital board game.","frontend":"TypeScript (React)","backend":"Supabase (BaaS)","db_used":"PostgreSQL (Supabase)"}
 ];
+
+if (typeof window !== 'undefined') {
+  window.PROJECTS_DATA = PROJECTS_DATA;
+}
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = PROJECTS_DATA;
+}
+
 
