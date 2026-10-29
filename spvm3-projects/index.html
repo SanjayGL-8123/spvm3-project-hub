@@ -3,22 +3,85 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SPVM3 Project Hub</title>
+  <title>SPVM3 Project Hub | 74+ Software & AI Projects by Sanjay GL</title>
+  <meta name="description" content="Official project showcase and catalog for SPVM Tech Solution, featuring 74+ student, full-stack, AI, and cybersecurity projects. Direct inquiries via WhatsApp and Email.">
+  <meta property="og:title" content="SPVM3 Project Hub | Software & AI Projects">
+  <meta property="og:description" content="Explore 74+ full-stack, AI, cybersecurity, and tools projects by SPVM Tech Solution (Sanjay GL).">
+  <meta property="og:image" content="logo.png">
+  <meta property="og:type" content="website">
+  <link rel="icon" type="image/png" href="logo.png">
   <style>
-    body { font-family: Arial, sans-serif; background: #f4f6f8; margin: 0; padding: 0; }
-    header { background: #1e293b; color: white; padding: 20px; text-align: center; }
-    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; padding: 20px; max-width: 1100px; margin: auto; }
-    .card { background: white; border-radius: 10px; padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
-    .card h3 { margin-top: 0; }
-    .card button { background: #25d366; color: white; border: none; padding: 10px 16px; border-radius: 6px; cursor: pointer; font-size: 15px; margin: 4px 4px 0 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; background: #f1f5f9; margin: 0; padding: 0; }
+    header {
+      background: linear-gradient(135deg, #090d16 0%, #111827 50%, #1e293b 100%);
+      color: white;
+      padding: 24px 20px;
+      border-bottom: 2px solid #0ea5e9;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.35);
+    }
+    .header-content {
+      max-width: 1100px;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      text-align: left;
+      flex-wrap: wrap;
+    }
+    .brand-logo {
+      width: 80px;
+      height: 80px;
+      border-radius: 16px;
+      box-shadow: 0 0 20px rgba(14, 165, 233, 0.45);
+      border: 1px solid rgba(14, 165, 233, 0.3);
+      object-fit: cover;
+      background: #000;
+    }
+    .header-text h1 {
+      margin: 0;
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      color: #ffffff;
+    }
+    .header-text p {
+      margin: 6px 0 0;
+      color: #94a3b8;
+      font-size: 15px;
+    }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; padding: 25px 20px; max-width: 1100px; margin: auto; }
+    .card {
+      background: white;
+      border-radius: 12px;
+      padding: 22px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+      transition: transform 0.2s, box-shadow 0.2s;
+      border: 1px solid #e2e8f0;
+    }
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    }
+    .card h3 { margin-top: 0; color: #0f172a; font-size: 18px; }
+    .card p { color: #475569; font-size: 14px; line-height: 1.5; }
+    .card small { color: #64748b; font-size: 12.5px; }
+    .card button { background: #25d366; color: white; border: none; padding: 10px 16px; border-radius: 6px; cursor: pointer; font-size: 14px; font-weight: 600; margin: 4px 4px 0 0; transition: background 0.2s; }
+    .card button:hover { background: #1eb857; }
     .card button.email { background: #ea4335; }
+    .card button.email:hover { background: #d33426; }
     .empty { text-align: center; color: #666; padding: 40px; }
   </style>
 </head>
 <body>
   <header>
-    <h1>SPVM3 Project Hub</h1>
-    <p>Available projects for sale</p>
+    <div class="header-content">
+      <img src="logo.png" alt="SPVM3 Tech Solution" class="brand-logo">
+      <div class="header-text">
+        <h1>SPVM3 Project Hub</h1>
+        <p>Software & AI Solutions by Sanjay GL · Available for Sale & Collaboration</p>
+      </div>
+    </div>
   </header>
   <div class="grid" id="projectList"></div>
   <script src="projects-data.js"></script>

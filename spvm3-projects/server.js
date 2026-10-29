@@ -34,6 +34,11 @@ const pool = mysql.createPool({
 //  PUBLIC ROUTES
 // =============================================================
 
+// Home page
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'index.html'));
+});
+
 // GET /api/projects  – list all active projects
 app.get('/api/projects', async (req, res) => {
   try {
@@ -63,6 +68,11 @@ app.post('/api/contact', async (req, res) => {
     console.error(err);
     res.status(500).json({ error: 'Database error' });
   }
+});
+
+// 404 Fallback
+app.use((req, res) => {
+  res.status(404).sendFile(path.join(__dirname, '404.html'));
 });
 
 // =============================================================
