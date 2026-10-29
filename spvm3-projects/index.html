@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SPVM3 Project Hub</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #f4f6f8; margin: 0; padding: 0; }
+    header { background: #1e293b; color: white; padding: 20px; text-align: center; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; padding: 20px; max-width: 1100px; margin: auto; }
+    .card { background: white; border-radius: 10px; padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+    .card h3 { margin-top: 0; }
+    .card button { background: #25d366; color: white; border: none; padding: 10px 16px; border-radius: 6px; cursor: pointer; font-size: 15px; margin: 4px 4px 0 0; }
+    .card button.email { background: #ea4335; }
+    .empty { text-align: center; color: #666; padding: 40px; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>SPVM3 Project Hub</h1>
+    <p>Available projects for sale</p>
+  </header>
+  <div class="grid" id="projectList"></div>
+  <script src="projects-data.js"></script>
+  <script src="app.js"></script>
+  <script>renderPublic();</script>
+</body>
+</html>
