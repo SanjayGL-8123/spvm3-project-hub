@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://spvm3-project-hub.vercel.app/sitemap.xml

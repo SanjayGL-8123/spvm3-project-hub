@@ -1,0 +1,990 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SPVM3 Project Hub | 74+ Software, AI & Cybersecurity Projects by Sanjay GL</title>
+  
+  <!-- SEO & Social Meta Tags -->
+  <meta name="description" content="Official project catalog of SPVM Tech Solution by Sanjay GL. Explore 74+ verified full-stack, AI/ML, cybersecurity, and Python projects with instant source code delivery. Contact via WhatsApp & Email.">
+  <meta name="keywords" content="SPVM3, Sanjay GL, software projects, AI projects, cybersecurity projects, Python, FastAPI, React, Flask, student projects, source code">
+  <meta name="author" content="Sanjay G L - SPVM Tech Solution">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://spvm3-project-hub.vercel.app/">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://spvm3-project-hub.vercel.app/">
+  <meta property="og:title" content="SPVM3 Project Hub | 74+ Software & AI Projects by Sanjay GL">
+  <meta property="og:description" content="Explore 74+ production-ready software, AI, and cybersecurity projects. Instant delivery & customization by SPVM Tech Solution.">
+  <meta property="og:image" content="https://spvm3-project-hub.vercel.app/logo.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="SPVM3 Project Hub | 74+ Software & AI Projects">
+  <meta name="twitter:description" content="Explore 74+ verified full-stack, AI, and cybersecurity projects with instant source code delivery.">
+  <meta name="twitter:image" content="https://spvm3-project-hub.vercel.app/logo.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="logo.png">
+  <link rel="apple-touch-icon" href="logo.png">
+
+  <style>
+    /* =========================================================
+       CSS VARIABLES & THEME SETUP
+       ========================================================= */
+    :root {
+      --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      --transition-fast: 0.2s ease;
+      --transition-normal: 0.3s ease;
+      --radius-sm: 6px;
+      --radius-md: 10px;
+      --radius-lg: 16px;
+      --radius-full: 9999px;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.12);
+      --shadow-md: 0 4px 14px rgba(0,0,0,0.18);
+      --shadow-lg: 0 10px 30px rgba(0,0,0,0.25);
+    }
+
+    [data-theme="dark"] {
+      --bg-body: #070b13;
+      --bg-header: #0b1120;
+      --bg-card: #0f172a;
+      --bg-card-hover: #131e35;
+      --bg-surface: #1e293b;
+      --bg-input: #111a2e;
+      --border-color: rgba(56, 189, 248, 0.16);
+      --border-color-hover: rgba(56, 189, 248, 0.4);
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --text-light: #64748b;
+      --accent: #38bdf8;
+      --accent-glow: rgba(56, 189, 248, 0.3);
+      --badge-fe-bg: rgba(59, 130, 246, 0.15);
+      --badge-fe-txt: #93c5fd;
+      --badge-be-bg: rgba(16, 185, 129, 0.15);
+      --badge-be-txt: #6ee7b7;
+      --badge-db-bg: rgba(245, 158, 11, 0.15);
+      --badge-db-txt: #fcd34d;
+      --card-id-bg: rgba(56, 189, 248, 0.1);
+      --card-id-txt: #38bdf8;
+    }
+
+    [data-theme="light"] {
+      --bg-body: #f8fafc;
+      --bg-header: #ffffff;
+      --bg-card: #ffffff;
+      --bg-card-hover: #f1f5f9;
+      --bg-surface: #e2e8f0;
+      --bg-input: #ffffff;
+      --border-color: #e2e8f0;
+      --border-color-hover: #cbd5e1;
+      --text-main: #0f172a;
+      --text-muted: #475569;
+      --text-light: #64748b;
+      --accent: #0284c7;
+      --accent-glow: rgba(2, 132, 199, 0.2);
+      --badge-fe-bg: #eff6ff;
+      --badge-fe-txt: #1d4ed8;
+      --badge-be-bg: #ecfdf5;
+      --badge-be-txt: #047857;
+      --badge-db-bg: #fffbeb;
+      --badge-db-txt: #b45309;
+      --card-id-bg: #e0f2fe;
+      --card-id-txt: #0369a1;
+    }
+
+    /* Base Reset */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-family);
+      background-color: var(--bg-body);
+      color: var(--text-main);
+      line-height: 1.6;
+      transition: background-color var(--transition-fast), color var(--transition-fast);
+      overflow-x: hidden;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Accessibility Skip Link */
+    .skip-link {
+      position: absolute;
+      top: -40px;
+      left: 10px;
+      background: var(--accent);
+      color: #fff;
+      padding: 8px 16px;
+      z-index: 1000;
+      border-radius: var(--radius-sm);
+      text-decoration: none;
+      font-weight: 600;
+      transition: top var(--transition-fast);
+    }
+    .skip-link:focus { top: 10px; }
+
+    /* Scroll Progress Bar */
+    #scrollProgress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3px;
+      width: 0%;
+      background: linear-gradient(90deg, #38bdf8, #818cf8, #a855f7);
+      z-index: 9999;
+      transition: width 0.1s ease-out;
+    }
+
+    /* Container */
+    .container {
+      width: 100%;
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* =========================================================
+       HEADER & NAVIGATION
+       ========================================================= */
+    header {
+      background: var(--bg-header);
+      border-bottom: 1px solid var(--border-color);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(10px);
+      box-shadow: var(--shadow-sm);
+      transition: background-color var(--transition-fast), border-color var(--transition-fast);
+    }
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 0;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .brand-section {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      text-decoration: none;
+      color: inherit;
+    }
+    .brand-logo {
+      width: 58px;
+      height: 58px;
+      border-radius: var(--radius-md);
+      object-fit: cover;
+      box-shadow: 0 0 15px var(--accent-glow);
+      border: 1px solid var(--border-color);
+      background: #000;
+      flex-shrink: 0;
+    }
+    .brand-text h1 {
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: -0.3px;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .brand-badge {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      padding: 2px 8px;
+      background: var(--accent);
+      color: #000;
+      border-radius: var(--radius-full);
+      letter-spacing: 0.5px;
+    }
+    .brand-text p {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .btn-theme {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      color: var(--text-main);
+      width: 42px;
+      height: 42px;
+      border-radius: var(--radius-full);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 18px;
+      transition: all var(--transition-fast);
+    }
+    .btn-theme:hover {
+      border-color: var(--accent);
+      box-shadow: 0 0 10px var(--accent-glow);
+      transform: scale(1.05);
+    }
+    .btn-header-wa {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #25d366;
+      color: #fff;
+      padding: 9px 18px;
+      border-radius: var(--radius-full);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 13.5px;
+      transition: all var(--transition-fast);
+      box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+    }
+    .btn-header-wa:hover {
+      background: #1eb857;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(37, 211, 102, 0.4);
+    }
+
+    /* =========================================================
+       HERO & STATS RIBBON
+       ========================================================= */
+    .hero-ribbon {
+      background: linear-gradient(180deg, rgba(56, 189, 248, 0.08) 0%, transparent 100%);
+      padding: 30px 0 20px;
+      border-bottom: 1px solid var(--border-color);
+    }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin-top: 15px;
+    }
+    .stat-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 16px 20px;
+      text-align: center;
+      box-shadow: var(--shadow-sm);
+      transition: transform var(--transition-fast), border-color var(--transition-fast);
+    }
+    .stat-card:hover {
+      transform: translateY(-2px);
+      border-color: var(--border-color-hover);
+    }
+    .stat-num {
+      font-size: 26px;
+      font-weight: 800;
+      color: var(--accent);
+    }
+    .stat-lbl {
+      font-size: 12.5px;
+      color: var(--text-muted);
+      font-weight: 500;
+      margin-top: 2px;
+    }
+
+    /* =========================================================
+       FILTER & SEARCH TOOLBAR
+       ========================================================= */
+    .toolbar-section {
+      padding: 24px 0 16px;
+    }
+    .toolbar-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 18px 20px;
+      box-shadow: var(--shadow-sm);
+    }
+    .search-row {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+    .search-wrapper {
+      position: relative;
+      flex: 1;
+      min-width: 240px;
+    }
+    .search-icon {
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 15px;
+      color: var(--text-light);
+      pointer-events: none;
+    }
+    .search-input {
+      width: 100%;
+      padding: 12px 14px 12px 40px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-color);
+      background: var(--bg-input);
+      color: var(--text-main);
+      font-size: 14.5px;
+      outline: none;
+      transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+    }
+    .search-input:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px var(--accent-glow);
+    }
+    .sort-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+    .sort-select {
+      padding: 11px 14px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-color);
+      background: var(--bg-input);
+      color: var(--text-main);
+      font-size: 14px;
+      outline: none;
+      cursor: pointer;
+      transition: border-color var(--transition-fast);
+    }
+    .sort-select:focus {
+      border-color: var(--accent);
+    }
+    .filter-pills {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .filter-btn {
+      background: var(--bg-surface);
+      color: var(--text-muted);
+      border: 1px solid var(--border-color);
+      padding: 8px 16px;
+      border-radius: var(--radius-full);
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all var(--transition-fast);
+    }
+    .filter-btn:hover {
+      color: var(--text-main);
+      border-color: var(--border-color-hover);
+    }
+    .filter-btn.active {
+      background: var(--accent);
+      color: #000;
+      border-color: var(--accent);
+      box-shadow: 0 0 12px var(--accent-glow);
+    }
+    .count-indicator {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 14px;
+      padding-top: 14px;
+      border-top: 1px solid var(--border-color);
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+    .btn-reset-filters {
+      background: none;
+      border: none;
+      color: var(--accent);
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 600;
+      padding: 0;
+    }
+    .btn-reset-filters:hover { text-decoration: underline; }
+
+    /* =========================================================
+       PROJECT GRID & CARDS
+       ========================================================= */
+    .grid-section {
+      padding: 10px 0 40px;
+      flex: 1;
+    }
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 20px;
+    }
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      box-shadow: var(--shadow-sm);
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast);
+      position: relative;
+    }
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--border-color-hover);
+    }
+    .card:focus-within {
+      border-color: var(--accent);
+    }
+    .card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+    .card-id {
+      background: var(--card-id-bg);
+      color: var(--card-id-txt);
+      font-size: 12px;
+      font-weight: 700;
+      padding: 3px 9px;
+      border-radius: var(--radius-sm);
+    }
+    .btn-copy-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      color: var(--text-muted);
+      border-radius: var(--radius-sm);
+      padding: 4px 8px;
+      font-size: 11.5px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      transition: all var(--transition-fast);
+    }
+    .btn-copy-card:hover {
+      color: var(--text-main);
+      border-color: var(--accent);
+    }
+    .btn-copy-card.copied {
+      background: #10b981;
+      color: #fff;
+      border-color: #10b981;
+    }
+    .card-title {
+      font-size: 17.5px;
+      font-weight: 700;
+      color: var(--text-main);
+      line-height: 1.35;
+      margin-bottom: 8px;
+      word-break: break-word;
+    }
+    .card-desc {
+      font-size: 13.5px;
+      color: var(--text-muted);
+      line-height: 1.55;
+      margin-bottom: 16px;
+      flex: 1;
+    }
+    .tech-badges {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 18px;
+    }
+    .badge-pill {
+      font-size: 12px;
+      padding: 4px 10px;
+      border-radius: var(--radius-sm);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-weight: 500;
+      max-width: 100%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .badge-fe { background: var(--badge-fe-bg); color: var(--badge-fe-txt); }
+    .badge-be { background: var(--badge-be-bg); color: var(--badge-be-txt); }
+    .badge-db { background: var(--badge-db-bg); color: var(--badge-db-txt); }
+
+    .card-actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: auto;
+    }
+    .btn-action {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 9px 12px;
+      border-radius: var(--radius-md);
+      font-size: 13px;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all var(--transition-fast);
+    }
+    .btn-card-wa {
+      background: #25d366;
+      color: #fff;
+    }
+    .btn-card-wa:hover {
+      background: #1eb857;
+      transform: translateY(-1px);
+    }
+    .btn-card-em {
+      background: #ea4335;
+      color: #fff;
+    }
+    .btn-card-em:hover {
+      background: #d33426;
+      transform: translateY(-1px);
+    }
+
+    /* Empty State */
+    .empty-state {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 60px 20px;
+      background: var(--bg-card);
+      border: 1px dashed var(--border-color);
+      border-radius: var(--radius-lg);
+    }
+    .empty-icon { font-size: 42px; margin-bottom: 12px; }
+    .empty-title { font-size: 18px; font-weight: 700; margin-bottom: 6px; }
+    .empty-desc { color: var(--text-muted); font-size: 14px; margin-bottom: 16px; }
+
+    /* =========================================================
+       FAQ SECTION
+       ========================================================= */
+    .faq-section {
+      background: var(--bg-header);
+      border-top: 1px solid var(--border-color);
+      border-bottom: 1px solid var(--border-color);
+      padding: 40px 0;
+    }
+    .faq-header {
+      text-align: center;
+      margin-bottom: 28px;
+    }
+    .faq-header h2 {
+      font-size: 24px;
+      font-weight: 800;
+      margin-bottom: 6px;
+    }
+    .faq-header p {
+      color: var(--text-muted);
+      font-size: 14px;
+    }
+    .faq-list {
+      max-width: 800px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .faq-item {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      transition: border-color var(--transition-fast);
+    }
+    .faq-item:hover { border-color: var(--border-color-hover); }
+    .faq-question {
+      width: 100%;
+      text-align: left;
+      padding: 16px 20px;
+      background: none;
+      border: none;
+      color: var(--text-main);
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+    }
+    .faq-arrow {
+      font-size: 14px;
+      transition: transform var(--transition-fast);
+      color: var(--accent);
+    }
+    .faq-item.active .faq-arrow {
+      transform: rotate(180deg);
+    }
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height var(--transition-normal);
+      padding: 0 20px;
+      color: var(--text-muted);
+      font-size: 14px;
+      line-height: 1.6;
+    }
+    .faq-item.active .faq-answer {
+      max-height: 250px;
+      padding: 0 20px 16px;
+    }
+
+    /* =========================================================
+       FOOTER
+       ========================================================= */
+    footer {
+      background: var(--bg-body);
+      padding: 36px 0 24px;
+      border-top: 1px solid var(--border-color);
+      margin-top: auto;
+    }
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .footer-left h3 {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+    .footer-left p {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+    .footer-links {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .footer-link {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 13px;
+      transition: color var(--transition-fast);
+    }
+    .footer-link:hover { color: var(--accent); }
+
+    /* =========================================================
+       FLOATING ACTIONS & COOKIE BANNER
+       ========================================================= */
+    .floating-wa {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: #25d366;
+      color: #fff;
+      width: 52px;
+      height: 52px;
+      border-radius: var(--radius-full);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 20px rgba(37, 211, 102, 0.45);
+      z-index: 90;
+      text-decoration: none;
+      font-size: 26px;
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+    }
+    .floating-wa:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 25px rgba(37, 211, 102, 0.6);
+    }
+    .back-to-top {
+      position: fixed;
+      bottom: 86px;
+      right: 26px;
+      background: var(--bg-card);
+      color: var(--text-main);
+      border: 1px solid var(--border-color);
+      width: 46px;
+      height: 46px;
+      border-radius: var(--radius-full);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      box-shadow: var(--shadow-md);
+      cursor: pointer;
+      z-index: 90;
+      font-size: 18px;
+      transition: all var(--transition-fast);
+    }
+    .back-to-top.visible { display: flex; }
+    .back-to-top:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .cookie-banner {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      max-width: 400px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 16px 20px;
+      box-shadow: var(--shadow-lg);
+      z-index: 100;
+      display: none;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .cookie-text {
+      font-size: 12.5px;
+      color: var(--text-muted);
+    }
+    .btn-cookie {
+      background: var(--accent);
+      color: #000;
+      border: none;
+      padding: 6px 14px;
+      border-radius: var(--radius-sm);
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+
+    /* =========================================================
+       PRINT STYLESHEET
+       ========================================================= */
+    @media print {
+      header, .toolbar-section, .hero-ribbon, .faq-section, footer, .floating-wa, .back-to-top, .cookie-banner, .btn-action, .btn-copy-card {
+        display: none !important;
+      }
+      body { background: #fff !important; color: #000 !important; }
+      .project-grid { display: block !important; }
+      .card { page-break-inside: avoid; border: 1px solid #ccc !important; margin-bottom: 15px; }
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 640px) {
+      .header-inner { flex-direction: column; text-align: center; }
+      .brand-section { flex-direction: column; }
+      .card-actions { grid-template-columns: 1fr; }
+      .search-row { flex-direction: column; align-items: stretch; }
+      .sort-wrapper { width: 100%; }
+      .sort-select { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Skip to main content -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- Scroll Progress -->
+  <div id="scrollProgress" aria-hidden="true"></div>
+
+  <!-- Header -->
+  <header>
+    <div class="container header-inner">
+      <a href="/" class="brand-section">
+        <img src="logo.png" alt="SPVM3 Tech Solution Logo" class="brand-logo" width="58" height="58">
+        <div class="brand-text">
+          <h1>
+            SPVM3 Project Hub
+            <span class="brand-badge">Official</span>
+          </h1>
+          <p>By Sanjay G L · Full-Stack, AI &amp; Cybersecurity Engineering</p>
+        </div>
+      </a>
+      <div class="header-actions">
+        <button id="themeToggle" class="btn-theme" title="Toggle Light / Dark Mode" aria-label="Toggle Light / Dark Mode">
+          <span id="themeIcon">☀️</span>
+        </button>
+        <a href="https://wa.me/918123981877?text=Hi%20Sanjay,%20I%20am%20visiting%20SPVM3%20Project%20Hub%20and%20want%20to%20inquire%20about%20a%20project." target="_blank" rel="noopener noreferrer" class="btn-header-wa">
+          <span>💬</span> Chat on WhatsApp
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Stats Ribbon -->
+  <section class="hero-ribbon">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-num" id="totalCount">74</div>
+          <div class="stat-lbl">Software &amp; AI Projects</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">6+</div>
+          <div class="stat-lbl">Tech Categories</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">100%</div>
+          <div class="stat-lbl">Source Code &amp; Docs</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">24/7</div>
+          <div class="stat-lbl">Direct Developer Support</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Toolbar Section: Search, Filters, Sort -->
+  <section class="toolbar-section">
+    <div class="container">
+      <div class="toolbar-box">
+        <div class="search-row">
+          <div class="search-wrapper">
+            <span class="search-icon">🔍</span>
+            <input type="text" id="projectSearch" class="search-input" placeholder="Search by name, technology (e.g. React, Flask, YOLO, SQLite)..." aria-label="Search projects">
+          </div>
+          <div class="sort-wrapper">
+            <label for="projectSort" style="font-size: 13px; color: var(--text-muted);">Sort:</label>
+            <select id="projectSort" class="sort-select" aria-label="Sort projects">
+              <option value="id-asc">Project ID (1 → 74)</option>
+              <option value="id-desc">Project ID (74 → 1)</option>
+              <option value="name-asc">Name (A → Z)</option>
+              <option value="name-desc">Name (Z → A)</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Filter Pills -->
+        <div class="filter-pills" role="tablist" aria-label="Filter by project category">
+          <button class="filter-btn active" data-filter="all">All Projects</button>
+          <button class="filter-btn" data-filter="ai">🤖 AI &amp; Machine Learning</button>
+          <button class="filter-btn" data-filter="cyber">🛡️ Cybersecurity &amp; Forensics</button>
+          <button class="filter-btn" data-filter="react">⚛️ React &amp; TypeScript</button>
+          <button class="filter-btn" data-filter="python">🐍 Python &amp; FastAPI</button>
+          <button class="filter-btn" data-filter="mobile">📱 Mobile (Flutter)</button>
+          <button class="filter-btn" data-filter="tools">🛠️ Tools &amp; Web Apps</button>
+        </div>
+
+        <div class="count-indicator">
+          <span id="projectCount">Showing 74 of 74 projects</span>
+          <button id="resetFilters" class="btn-reset-filters" style="display:none;" onclick="resetAllFilters()">Reset Filters</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content: Project Grid -->
+  <main id="main-content" class="grid-section">
+    <div class="container">
+      <div class="project-grid" id="projectList" role="region" aria-live="polite">
+        <!-- Rendered dynamically -->
+      </div>
+    </div>
+  </main>
+
+  <!-- FAQ Accordion Section -->
+  <section class="faq-section">
+    <div class="container">
+      <div class="faq-header">
+        <h2>Frequently Asked Questions</h2>
+        <p>Everything you need to know about purchasing or collaborating on SPVM3 projects</p>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>What do I receive when I purchase a project?</span>
+            <span class="faq-arrow">▼</span>
+          </button>
+          <div class="faq-answer">
+            You receive the complete, uncompiled source code, detailed README instructions, requirements.txt or package.json, database schema files (SQL/migrations), sample data, and a quick-start run command.
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>Can a project be customized to my college or business specifications?</span>
+            <span class="faq-arrow">▼</span>
+          </button>
+          <div class="faq-answer">
+            Yes! Sanjay GL provides end-to-end customization, new feature development, UI redesign, and deployment onto platforms like AWS, Vercel, or VPS. Message via WhatsApp to discuss requirements.
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>How fast can I get access to a project?</span>
+            <span class="faq-arrow">▼</span>
+          </button>
+          <div class="faq-answer">
+            Delivery is instant upon inquiry verification via GitHub repository access or secure ZIP transfer within minutes.
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>How do I get in touch for pricing and consultation?</span>
+            <span class="faq-arrow">▼</span>
+          </button>
+          <div class="faq-answer">
+            Click any project's WhatsApp button (+91 8123981877) or Email button (spvm3techsolution@gmail.com). You can also use the green floating WhatsApp widget at any time.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container footer-inner">
+      <div class="footer-left">
+        <h3>SPVM3 Tech Solution</h3>
+        <p>Founded by Sanjay G L · High-Performance Full-Stack &amp; AI Systems</p>
+        <p style="font-size: 12px; color: var(--text-light); margin-top: 4px;">&copy; 2026 SPVM3 Tech Solution. All rights reserved.</p>
+      </div>
+      <div class="footer-links">
+        <a href="https://wa.me/918123981877" target="_blank" rel="noopener noreferrer" class="footer-link">WhatsApp: +91 8123981877</a>
+        <a href="mailto:spvm3techsolution@gmail.com" class="footer-link">Email: spvm3techsolution@gmail.com</a>
+        <a href="#main-content" class="footer-link">Browse Projects</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating WhatsApp Action -->
+  <a href="https://wa.me/918123981877?text=Hi%20Sanjay,%20I%20want%20to%20consult%20regarding%20SPVM3%20projects." target="_blank" rel="noopener noreferrer" class="floating-wa" title="Instant WhatsApp Support" aria-label="Instant WhatsApp Support">
+    💬
+  </a>
+
+  <!-- Back to Top Button -->
+  <button id="backToTop" class="back-to-top" title="Scroll to top" aria-label="Scroll to top">
+    ↑
+  </button>
+
+  <!-- Cookie Consent Banner -->
+  <div id="cookieBanner" class="cookie-banner" role="dialog" aria-live="polite">
+    <div class="cookie-text">We use essential local storage to remember your theme preference and project search state.</div>
+    <button id="cookieOk" class="btn-cookie">Got It</button>
+  </div>
+
+  <!-- EMBEDDED ISOMORPHIC DATASET (Always available, zero 404 risk) -->
+  <script src="projects-data.js"></script>
+  <!-- CLIENT LOGIC -->
+  <script src="app.js"></script>
+
+  <!-- SAFE BOOTSTRAP SCRIPT (Never throws ReferenceError) -->
+  <script>
+    (function bootstrap() {
+      // If external app.js executed, renderPublic is already ready.
+      // If not, this safeguard runs as soon as scripts finish or DOM is ready.
+      function trigger() {
+        if (typeof renderPublic === 'function') {
+          renderPublic();
+        }
+      }
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', trigger);
+      } else {
+        trigger();
+      }
+    })();
+  </script>
+</body>
+</html>

@@ -7,7 +7,6 @@ const express = require('express');
 const cors    = require('cors');
 const path    = require('path');
 const fs      = require('fs');
-const vm      = require('vm');
 
 const app  = express();
 const PORT = process.env.PORT || 3000;
@@ -15,10 +14,7 @@ const PORT = process.env.PORT || 3000;
 // Load 74 projects from projects-data.js
 let projects = [];
 try {
-  const fileContent = fs.readFileSync(path.join(__dirname, 'projects-data.js'), 'utf8');
-  const sandbox = { window: {} };
-  vm.runInNewContext(fileContent, sandbox);
-  projects = sandbox.window.PROJECTS_DATA || [];
+  projects = require('./projects-data.js');
 } catch (e) {
   console.error('Error loading projects data:', e.message);
 }
@@ -29,11 +25,14 @@ app.use(cors({
   credentials: true
 }));
 app.use(express.json());
+
+// Serve static assets from public/ first, then root fallback
+app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname)));
 
 // ── Routes ────────────────────────────────────────────────────
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'index.html'));
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
 // REST API: get projects
@@ -52,7 +51,7 @@ app.post('/api/contact', (req, res) => {
 
 // 404 Fallback
 app.use((req, res) => {
-  res.status(404).sendFile(path.join(__dirname, '404.html'));
+  res.status(404).sendFile(path.join(__dirname, 'public', '404.html'));
 });
 
 app.listen(PORT, () => {
