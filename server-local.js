@@ -11,10 +11,10 @@ const fs      = require('fs');
 const app  = express();
 const PORT = process.env.PORT || 3000;
 
-// Load 74 projects from projects-data.js
+// Load 74 projects from public/projects-data.js
 let projects = [];
 try {
-  projects = require('./projects-data.js');
+  projects = require('./public/projects-data.js');
 } catch (e) {
   console.error('Error loading projects data:', e.message);
 }
@@ -51,7 +51,11 @@ app.post('/api/contact', (req, res) => {
 
 // 404 Fallback
 app.use((req, res) => {
-  res.status(404).sendFile(path.join(__dirname, 'public', '404.html'));
+  const p404 = path.join(__dirname, 'public', '404.html');
+  if (fs.existsSync(p404)) {
+    return res.status(404).sendFile(p404);
+  }
+  res.status(404).send('<h1>404 Not Found</h1><p>The requested page was not found on SPVM3 Project Hub.</p>');
 });
 
 app.listen(PORT, () => {

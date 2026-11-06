@@ -1,87 +1,121 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>404 - Page Not Found | SPVM3 Project Hub</title>
+  <meta name="description" content="The page you are looking for does not exist on SPVM3 Project Hub. Return to browse 74+ full-stack and AI software projects.">
+  <meta name="robots" content="noindex, follow">
   <link rel="icon" type="image/png" href="logo.png">
   <style>
+    :root {
+      --bg-body: #070b13;
+      --bg-card: #0f172a;
+      --border-color: rgba(56, 189, 248, 0.16);
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent: #38bdf8;
+      --radius-md: 12px;
+      --radius-sm: 8px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
-      font-family: 'Segoe UI', Arial, sans-serif;
-      background: linear-gradient(135deg, #090d16 0%, #111827 50%, #1e293b 100%);
-      color: white;
-      min-height: 100vh;
-      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg-body);
+      color: var(--text-main);
       display: flex;
       align-items: center;
       justify-content: center;
+      min-height: 100vh;
+      padding: 24px;
       text-align: center;
-      padding: 20px;
-      box-sizing: border-box;
     }
-    .card {
-      background: rgba(17, 24, 39, 0.85);
-      border: 1px solid rgba(14, 165, 233, 0.35);
-      border-radius: 16px;
-      padding: 40px 30px;
-      max-width: 480px;
+    .error-card {
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 48px 32px;
+      max-width: 520px;
       width: 100%;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 25px rgba(14, 165, 233, 0.2);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
     }
     .brand-logo {
-      width: 90px;
-      height: 90px;
-      border-radius: 18px;
-      box-shadow: 0 0 25px rgba(14, 165, 233, 0.5);
+      width: 64px;
+      height: 64px;
       margin-bottom: 20px;
-      object-fit: cover;
+    }
+    .error-code {
+      font-size: 64px;
+      font-weight: 800;
+      color: var(--accent);
+      line-height: 1;
+      margin-bottom: 12px;
     }
     h1 {
-      font-size: 54px;
-      margin: 0;
-      color: #38bdf8;
-      font-weight: 800;
-      letter-spacing: 1px;
-    }
-    h2 {
-      font-size: 22px;
-      margin: 10px 0 15px;
-      color: #ffffff;
-      font-weight: 600;
+      font-size: 24px;
+      margin-bottom: 12px;
+      font-weight: 700;
     }
     p {
-      color: #94a3b8;
+      color: var(--text-muted);
       font-size: 15px;
       line-height: 1.6;
       margin-bottom: 28px;
     }
-    .btn {
-      display: inline-block;
-      background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
-      color: white;
+    .btn-home {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--accent);
+      color: #0b1120;
+      font-weight: 700;
+      font-size: 14px;
+      padding: 12px 24px;
+      border-radius: var(--radius-sm);
       text-decoration: none;
-      padding: 12px 28px;
-      border-radius: 8px;
-      font-size: 15px;
-      font-weight: 600;
-      transition: all 0.2s ease;
-      box-shadow: 0 4px 15px rgba(2, 132, 199, 0.4);
+      transition: transform 0.2s ease, opacity 0.2s ease;
     }
-    .btn:hover {
-      background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
+    .btn-home:hover {
+      opacity: 0.92;
       transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(14, 165, 233, 0.5);
+    }
+    .btn-home:focus-visible {
+      outline: 2px solid #fff;
+      outline-offset: 3px;
+    }
+    .contact-links {
+      margin-top: 32px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border-color);
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+    .contact-links a {
+      color: var(--accent);
+      text-decoration: none;
+      margin: 0 6px;
+    }
+    .contact-links a:hover {
+      text-decoration: underline;
     }
   </style>
 </head>
 <body>
-  <div class="card">
-    <img src="logo.png" alt="SPVM3 Tech Solution" class="brand-logo">
-    <h1>404</h1>
-    <h2>Page Not Found</h2>
-    <p>The page you are looking for does not exist or may have been moved.</p>
-    <a href="/" class="btn">Back to Project Hub</a>
-  </div>
+  <main class="error-card">
+    <img src="logo.png" alt="SPVM3 Tech Solution Logo" class="brand-logo" width="64" height="64">
+    <div class="error-code">404</div>
+    <h1>Page Not Found</h1>
+    <p>The page or project resource you requested does not exist or has been relocated on SPVM3 Project Hub.</p>
+    <a href="/" class="btn-home">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+      <span>Back to Projects</span>
+    </a>
+    <div class="contact-links">
+      Need assistance? Contact <strong>SPVM3 Tech Solution</strong>:
+      <br>
+      <a href="https://wa.me/918123981877" target="_blank" rel="noopener noreferrer">WhatsApp (+91 8123981877)</a> |
+      <a href="mailto:spvm3techsolution@gmail.com">spvm3techsolution@gmail.com</a>
+    </div>
+  </main>
 </body>
 </html>
-
